@@ -3,17 +3,19 @@
 #include <stdlib.h>
 #include <string.h>
 
+//DEFINICAO DA ESTRUTURA DOS NOS QUE ARMAZENARAO ATLETAS NA LISTA
 typedef struct _SLNode_ {
     struct _SLNode_ *next;
     void * data;
 } SLNode;
 
+//DEFINICAO DA ESTRUTURA DA LISTA SIMPLESMENTE ENCADEADA
 typedef struct _SLLIst_ {
     SLNode *first;
     SLNode *cur;
 } SLList;
 
-//CRIA UMA LISTA
+//CRIA A LISTA E ALOCA O ESPACO NA MEMORIA NECESSARIO
 SLList *SllCreate(){
     SLList *l;
     //� ALOCADO UM SLLIST NA VARI�VEL l
@@ -27,7 +29,7 @@ SLList *SllCreate(){
     return NULL;
 }
 
-
+//CRIA UM NOVO NO COM UM DADO FORNECIDO E O INSERE NA LISTA, CASO EXISTA
 int SllInsert(SLList *l, void * data){
     SLNode * newnode;
     if (l != NULL){
@@ -46,7 +48,7 @@ int SllInsert(SLList *l, void * data){
     return FALSE;
 }
 
-
+//REMOVE UM DETERMINADO NO DA LISTA A PARTIR DE DADOS FORNECIDOS
 void * SllRemoveSpec(SLList * l, void * key, int(*cmp)(void *, void *)){
     void * data;
     SLNode *spec, *prev;
@@ -73,6 +75,7 @@ void * SllRemoveSpec(SLList * l, void * key, int(*cmp)(void *, void *)){
     return NULL;
 }
 
+//ENCONTRA NA LISTA OS DADOS DE UM DETERMINADO NO, A PARTIR DE DADOS FORNECIDOS
 void * SllQuery(SLList *l, void * key, int(*cmp)(void *, void *)){
     SLNode * spec;
     if(l != NULL){
@@ -89,7 +92,7 @@ void * SllQuery(SLList *l, void * key, int(*cmp)(void *, void *)){
     return NULL;
 }
 
-
+//DESALOCA-SE A LISTA, SE A MESMA ESTIVER VAZIA
 int SllDestroy(SLList *l){
     if(l != NULL){
         if(l->first == NULL){
@@ -100,6 +103,7 @@ int SllDestroy(SLList *l){
     return FALSE;
 }
 
+//METODO QUE RETORNA O PRIMEIRO ELEMENTO DA LISTA, UTILIZADO NA FUNCAO DE LISTAGEM
 void * SllGetFirst(SLList * l){
     SLNode * first = NULL;
     void * data = NULL;
@@ -115,6 +119,7 @@ void * SllGetFirst(SLList * l){
     return NULL;
 }
 
+//METODO QUE RETORNA O PROXIMO ELEMENTO DA LISTA, GERALMENTE UTILIZADO EM CONJUNTO COM A FUNCAO ANTERIOR
 void * SllGetNext(SLList *l){
     SLNode *next = NULL;
     void * data = NULL;

@@ -6,6 +6,7 @@
 
 SLList * camp = NULL;
 
+//DEFINICAO DA ESTRUTURA DO ATLETA
 typedef struct _atleta_{
     char iniciaisNome[30];
     int idade;
@@ -13,7 +14,7 @@ typedef struct _atleta_{
     float TempoMin;
 } Atleta;
 
-
+//CRIA O CAMPEONATO EM QUE SERAO INSERIDOS OS ATLETAS
 void criarCampeonato(){
     if(camp == NULL){
         camp = SllCreate();
@@ -23,7 +24,7 @@ void criarCampeonato(){
     }
 }
 
-
+//CRIA UM ATLETA A PARTIR DE INFORMACOES DADAS, FUNCAO UTILIZADA PELAS FUNCOES INSERIR, REMOVER, CONSULTAR, ETC
 Atleta * criarAtleta(char iniciaisNome[], int idade, float altura, float TempoMin){
     Atleta * atleta;
     atleta = (Atleta *)malloc(sizeof(Atleta));
@@ -38,6 +39,7 @@ Atleta * criarAtleta(char iniciaisNome[], int idade, float altura, float TempoMi
     return NULL;
 }
 
+//COMPARACAO OS DADOS DE DOIS ATLETAS RETORNANDO TRUE CASO SEJAM IGUAIS, UTILIZADA EM FUNCOES COMO REMOVER, CONSULTAR, ETC
 int cmpAtleta(void * atleta1, void * atleta2){
     if (atleta1 != NULL && atleta2 != NULL){
         char * iniciasNome1 = ((Atleta*)atleta1)->iniciaisNome;
@@ -57,7 +59,7 @@ int cmpAtleta(void * atleta1, void * atleta2){
     return FALSE;
 }
 
-
+//INSERE OS DADOS DE UM ATLETA NO CAMPEONATO
 void inserirAtleta(){
     int result = FALSE;
     if (camp == NULL){
@@ -82,16 +84,19 @@ void inserirAtleta(){
         printf("Menor Tempo:\n");
         scanf("%f", &TempoMin);
 
+        //CRIA-SE UM ATLETA NA VARIAVEL atleta A PARTIR DOS DADOS RECEBIDOS, E DEPOIS O INSERE NA LISTA (CAMPEONATO)
         atleta = criarAtleta(iniciasNome, idade, altura, TempoMin);
 
         result = SllInsert(camp, atleta);
 
         if (result == TRUE){
             printf("Atleta inserido na competicao!\n\n");
+        } else {
+            printf("Houve algum erro na insercao!\n\n");
         }
 }
 
-
+//REMOVE UM ATLETA, CASO ESTEJA PRESENTE NO CAMPEONATO, A PARTIR DE DADOS FORNECIDOS
 void removerAtleta(){
     void * result = NULL;
     if (camp == NULL){
@@ -119,6 +124,7 @@ void removerAtleta(){
         printf("Menor Tempo:\n");
         scanf("%f", &TempoMin);
 
+        //PRIMEIRO CRIA-SE UM ATLETA A PARTIR DOS DADOS FORNECIDOS, PARA DEPOIS REMOVE-LO DA LISTA, CASO EXISTA NA MESMA
         atleta = criarAtleta(iniciaisNome, idade, altura, TempoMin);
 
         result = SllRemoveSpec(camp, atleta, cmpAtleta);
@@ -130,7 +136,7 @@ void removerAtleta(){
         }
 }
 
-
+//CONSULTA SE UM ATLETA ESTÁ PRESENTE NO CAMPEONATO
 void consultarAtleta(){
     void * result = NULL;
     if (camp == NULL){
@@ -158,9 +164,11 @@ void consultarAtleta(){
         printf("Menor Tempo:\n");
         scanf("%f", &TempoMin);
 
+        //CRIA-SE UM ATLETA A PARTIR DOS DADOS RECEBIDOS, PARA DEPOIS CHECAR SE FOI ENCONTRADO NA LISTA
         atleta = criarAtleta(iniciaisNome,idade,altura,TempoMin);
         result = SllQuery(camp, atleta, cmpAtleta);
 
+        //CASO SEJA ENCONTRADO, PEGA-SE INDIVIDUALMENTE CADA CAMPO DOS SEUS DADOS (A PARTIR DE FUNCOES) E OS IMPRIME NA TELA
         if (result == NULL){
             printf("\n\nATLETA NAO ENCONTRADO!!\n\n");
         } else {
@@ -172,12 +180,15 @@ void consultarAtleta(){
         }
 }
 
+//DESTROI O CAMPEONATO, SO E POSSIVEL SE NAO HOUVER MAIS ATELTAS NO MESMO
 void destruirCampeonato(){
     int result = FALSE;
     if (camp == NULL){
         printf("Nao ha campeonato para ser destruido!\n");
         return NULL;
     }
+
+    //O CAMPEONATO(LISTA) SO PODERA SER DESTRUIDO SE NAO HOUVER MAIS ATLETAS NA MESMA
     if (SllGetFirst(camp) != NULL){
         printf("Primeiro retire todos os atletas do campeonato!\n");
     } else {
@@ -188,9 +199,12 @@ void destruirCampeonato(){
     }
 }
 
+//LISTA OS ATLETAS PRESENTES NO CAMPEONATO
 void listarAtletas(){
     Atleta * atleta;
     if (camp != NULL){
+
+        //INICIA-SE ATRIBUINDO A VARIAVEL atleta O PRIMEIRO ATLETA DA LISTA, DEPOIS CRIA-SE UM LOOP PARA PASSAR PARA O PROXIMO ATLETA ENQUANTO AINDA EXISTIREM. TUDO ISSO ATRAVES DO INTERMEDIO DE FUNCOES
         atleta = SllGetFirst(camp);
         while (atleta != NULL){
             printf("INICIAIS DO NOME: %s\n", retornaNome(atleta));
@@ -207,6 +221,7 @@ void listarAtletas(){
     }
 }
 
+//RETORNA OS DADOS DE UM ATLETA, FUNCAO USADA NA LISTAGEM DE ATLETAS
 char * retornaNome(Atleta * atleta){
     if (atleta != NULL){
         return atleta->iniciaisNome;
