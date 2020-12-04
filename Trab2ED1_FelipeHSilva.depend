@@ -1,0 +1,25 @@
+# depslib dependency file v1.0
+1607048369 source:c:\users\felipe\documents\c\trab2ed1_felipehsilva\atleta.c
+	"atleta.h"
+	"sll.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1607043797 c:\users\felipe\documents\c\trab2ed1_felipehsilva\atleta.h
+
+1607043970 c:\users\felipe\documents\c\trab2ed1_felipehsilva\sll.h
+
+1607048606 source:c:\users\felipe\documents\c\trab2ed1_felipehsilva\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"atleta.h"
+	"sll.h"
+
+1607048335 source:c:\users\felipe\documents\c\trab2ed1_felipehsilva\sll.c
+	"sll.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
