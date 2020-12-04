@@ -23,7 +23,7 @@ int main(void){
         printf("\t4 - Consultar Atleta.\n");
         printf("\t5 - Listar Atletas.\n");
         printf("\t6 - Destruir campeonato.\n");
-        printf("\t7 - Sair.\n");
+        printf("\t7 - Sair.\n\n");
 
         printf("Digite a opcao:");
         scanf("%d", &op);
@@ -53,10 +53,10 @@ int main(void){
                 break;
 
             default:
-            printf("\n\t******************************\n");
-            printf("\tOPCAO INVALIDA!Tente Novamente!");
-            printf("\n\t******************************\n");
-            break;
+                printf("\n\t******************************\n");
+                printf("\tOPCAO INVALIDA!Tente Novamente!");
+                printf("\n\t******************************\n");
+                break;
 
         }
     } while (op != 7);

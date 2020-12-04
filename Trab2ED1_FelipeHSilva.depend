@@ -23,3 +23,27 @@
 	<stdlib.h>
 	<string.h>
 
+1607084871 source:c:\users\felipe\desktop\traimp2ed1\atleta.c
+	"atleta.h"
+	"sll.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+
+1607084781 c:\users\felipe\desktop\traimp2ed1\atleta.h
+
+1607084781 c:\users\felipe\desktop\traimp2ed1\sll.h
+
+1607089119 source:c:\users\felipe\desktop\traimp2ed1\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"atleta.h"
+	"sll.h"
+
+1607084781 source:c:\users\felipe\desktop\traimp2ed1\sll.c
+	"sll.h"
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+

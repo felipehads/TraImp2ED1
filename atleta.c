@@ -95,7 +95,10 @@ void inserirAtleta(){
 void removerAtleta(){
     void * result = NULL;
     if (camp == NULL){
-        printf("Crie um campeonato e/ou insira um atleta primeiro!\n");
+        printf("Crie um campeonato primeiro!\n");
+        return NULL;
+    } else if (SllGetFirst(camp) == NULL){
+        printf("Insira um atleta na competicao antes!\n");
         return NULL;
     }
         char iniciaisNome[30];
@@ -131,7 +134,10 @@ void removerAtleta(){
 void consultarAtleta(){
     void * result = NULL;
     if (camp == NULL){
-        printf("Crie um campeonato e insira um atleta primeiro!\n");
+        printf("Crie um campeonato primeiro!\n");
+        return NULL;
+    } else if (SllGetFirst(camp) == NULL){
+        printf("Insira um atleta na competicao antes!\n");
         return NULL;
     }
         char iniciaisNome[30];
@@ -194,8 +200,10 @@ void listarAtletas(){
 
             atleta = SllGetNext(camp);
         }
-    }else{
-        printf("Nao existem atletas na competicao!\n");
+    }else if (camp == NULL){
+        printf("Nao existe campeonato!\n");
+    } else if (SllGetFirst(camp) == NULL){
+        printf("Insira alguem no campeonato primeiro!\n");
     }
 }
 
